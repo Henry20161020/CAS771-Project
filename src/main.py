@@ -435,7 +435,6 @@ train_counter = []
 test_losses = []
 mse = []
 test_counter = [i*len(train_loader.dataset) for i in range(n_epochs*2 + 1)]
-"""
 test(1)
 for epoch in range(1, n_epochs + 1):
   train(epoch, 1)
@@ -457,14 +456,13 @@ for epoch in range(n_epochs + 1, 2 * n_epochs + 1):
 draw_curve() 
 
 """
-
 #for dataset 1
 train_loader = torch.utils.data.DataLoader(dataset1, batch_size=batch_size_train, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset1, batch_size=batch_size_test, shuffle=True)
-
+"""
 # Load the .pth file for debugging
 network.to(device)
-checkpoint = torch.load("model_bak.pth")
+checkpoint = torch.load("model.pth")
 
 # Print the keys of the checkpoint dictionary
 #print(checkpoint.keys())
@@ -483,15 +481,5 @@ save_images(dec, '../decrypted_images')
 save_images(enc, '../encrypted_images')
 #save_images(ori, '../original_images')
 
-
-#torch.manual_seed(42)
-
-#my_list = [45000,5000]
-
-#train_ds, val_ds = torch.utils.data.random_split(train_dataset, my_list)
-
-#configs = {'random_seed' : 42, 'val_size' : 5000, 'train_size' : 45000, 'pin_memory':True,'optimizer':'Adam','batch_size':64,'lr':0.001 }
-#train_data = torch.utils.data.DataLoader(train_ds, configs['batch_size'], shuffle = True, pin_memory = configs['pin_memory'], num_workers = 2)
-#val_data = torch.utils.data.DataLoader(val_ds, configs['batch_size'], shuffle = True, pin_memory = configs['pin_memory'], num_workers = 2)
 
 
